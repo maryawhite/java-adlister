@@ -15,15 +15,15 @@
         response.sendRedirect("/profile.jsp");
     }
 }
-
 %>
 
 <html>
-<head>
-    <title>Login</title>
-</head>
+<%@include file="partials/head.jsp" %>
 <body>
-<h3>Login Form</h3>
+<%@include file="partials/navbar.jsp"%>
+
+<div class="container">
+<h3 class="mt-4">Login Form</h3>
 <form method="POST" action="/login.jsp">
 
     <label for="username">Username</label>
@@ -37,6 +37,7 @@
     <input type="submit">
 </form>
 
-
+<%@include file="partials/script_tags.jsp" %>
+</div>
 </body>
 </html>
