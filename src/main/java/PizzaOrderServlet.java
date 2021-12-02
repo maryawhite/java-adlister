@@ -22,10 +22,18 @@ public class PizzaOrderServlet extends HttpServlet {
         System.out.println("sauce: " + sauce);
         String sauceAmount = request.getParameter("sauce_amount_preference");
         System.out.println("sauce amount: " + sauceAmount);
-        String meattoppings = request.getParameter("meattoppings");
-        System.out.println("meat toppings: " + meattoppings);
-        String veggietoppings = request.getParameter("veggietoppings");
-        System.out.println("veggie toppings: " + veggietoppings);
+
+        String[] meattopping = request.getParameterValues("meattopping");  //the string meattopping matches the name in the input in the jsp file
+            for (int i = 0; i < meattopping.length; i++) {
+                System.out.println("Meat Toppings: " + meattopping[i]);
+            }
+
+        String[] veggietopping = request.getParameterValues("veggietopping");
+        for (int i = 0; i < veggietopping.length; i++) {
+            System.out.println("Meat Toppings: " + veggietopping[i]);
+        }
+
+
         String size = request.getParameter("size");
         System.out.println("size: " + size);
         String address = request.getParameter("address");
@@ -38,13 +46,13 @@ public class PizzaOrderServlet extends HttpServlet {
 //        request.setAttribute("crust", crust);
 //        request.setAttribute("sauce", sauce);
 //        request.setAttribute("sauceAmount", sauceAmount);
-//        request.setAttribute("meattoppings", meattoppings);
-//        request.setAttribute("veggietoppins", veggietoppings);
+//        request.setAttribute("meattopping", meattopping);
+//        request.setAttribute("veggietopping", veggietopping);
 //        request.setAttribute("size", size);
 //        request.setAttribute("address", address);
 
-        System.out.println("crust: " + crust + " sauce type: " + sauce + " " + " sauce amount: " + sauceAmount + " Meat Toppings: " + meattoppings + " "
-                + "Veggie Toppings: " + veggietoppings + " " + "size: " + size + " " + "Address: " + address);
+        System.out.println("crust: " + crust + " sauce type: " + sauce + " " + " sauce amount: " + sauceAmount + " Meat Toppings: " + meattopping + " "
+                + "Veggie Toppings: " + veggietopping + " " + "size: " + size + " " + "Address: " + address);
         response.sendRedirect("/pizza-order");
 
     }
