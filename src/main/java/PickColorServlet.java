@@ -1,0 +1,26 @@
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebServlet(name = "PickColorServlet", urlPatterns = "/pickcolor")
+public class PickColorServlet extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/pickcolor.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String color = request.getParameter("color");
+
+        request.setAttribute("color", color); //the string in quotes is the bridge. use it in the jsp as <tag>${color}</tag>
+
+        response.sendRedirect("/viewcolor?color=" + color); //pass the data from one servlet to another by adding the color value in a query string
+
+    }
+
+}
