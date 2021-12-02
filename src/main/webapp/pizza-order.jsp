@@ -13,7 +13,7 @@
 <body>
 <%@include file="partials/navbar.jsp"%>
 
-<form method="POST" action="/pizza-order">
+<form method="POST" action="/pizza-order"> <!--the action is optional here, but it should match the servlet url pattern-->
 
     <label for="address">Address</label>
     <input type="text" name="address" id="address" placeholder="input your delivery address">
