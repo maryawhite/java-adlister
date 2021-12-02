@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Arrays;
 
 @WebServlet(name = "PizzaOrderServlet", urlPatterns = "/pizza-order")
 public class PizzaOrderServlet extends HttpServlet {
@@ -24,13 +25,24 @@ public class PizzaOrderServlet extends HttpServlet {
         System.out.println("sauce amount: " + sauceAmount);
 
         String[] meattopping = request.getParameterValues("meattopping");  //the string meattopping matches the name in the input in the jsp file
+        System.out.println("Meat Toppings: ");
+        if(meattopping != null){      //when this if statement wasn't here, if the user didn't select any toppings it would cause a null pointer error
             for (int i = 0; i < meattopping.length; i++) {
-                System.out.println("Meat Toppings: " + meattopping[i]);
+                System.out.println(meattopping[i]);
             }
+        } else {
+            System.out.println("no meat");
+        }
+
 
         String[] veggietopping = request.getParameterValues("veggietopping");
-        for (int i = 0; i < veggietopping.length; i++) {
-            System.out.println("Meat Toppings: " + veggietopping[i]);
+        System.out.println("Veggie Toppings: ");
+        if(veggietopping != null){
+            for (int i = 0; i < veggietopping.length; i++) {
+                System.out.println(veggietopping[i]);
+            }
+        } else {
+            System.out.println("no veggies");
         }
 
 
@@ -51,8 +63,9 @@ public class PizzaOrderServlet extends HttpServlet {
 //        request.setAttribute("size", size);
 //        request.setAttribute("address", address);
 
-        System.out.println("crust: " + crust + " sauce type: " + sauce + " " + " sauce amount: " + sauceAmount + " Meat Toppings: " + meattopping + " "
-                + "Veggie Toppings: " + veggietopping + " " + "size: " + size + " " + "Address: " + address);
+        System.out.println("Crust: " + crust + " Sauce type: " + sauce + " " + " Sauce amount: " + sauceAmount + " Meat Toppings: " + Arrays.toString(meattopping) + " "
+                + "Veggie Toppings: " + Arrays.toString(veggietopping) + " " + "Size: " + size + " " + "Address: " + address);
+
         response.sendRedirect("/pizza-order");
 
     }

@@ -19,20 +19,22 @@
     <input type="text" name="address" id="address" placeholder="input your delivery address">
     <br>
 
+    <label for="crust_preference">Select Crust</label>
     <select name="crust_preference" id="crust_preference">
         <option value="hand-tossed">Hand Tossed</option>
         <option value="crispy-thin">Crispy Thin</option>
     </select>
     <br>
 
+    <label for="sauce_amount_preference">Sauce Amount</label>
     <select name="sauce_amount_preference" id="sauce_amount_preference">
         <option value="light">Light</option>
         <option value="normal">Normal</option>
         <option value="extra">Extra</option>
-        <option value="double">Double</option>
     </select>
     <br>
 
+    <label for="sauce_type_preference">Sauce Type</label>
     <select name="sauce_type_preference" id="sauce_type_preference">
         <option value="marinara">Marinara Sauce</option>
         <option value="bbq">BBQ Sauce</option>
@@ -40,6 +42,7 @@
     </select>
     <br>
 
+    <p>Select Toppings </p>
     <label for="meattopping1"><input type="checkbox" id="meattopping1" name="meattopping" value="Meatballs">
     Meatballs</label><br>
 
