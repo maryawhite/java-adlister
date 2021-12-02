@@ -10,8 +10,8 @@ import java.util.Random;
 public class NumberGuessServlet extends HttpServlet {
     Random random = new Random();
     int randomNumber = random.nextInt(3) + 1;
-
-
+    int min = 1;
+    int max =3;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,7 +27,9 @@ public class NumberGuessServlet extends HttpServlet {
 
         //if the user's guess matches the randomNumber, then we need to send them to the "you win" message
         //else we need to send them to the "you lose" message
-        if(number == randomNumber){
+        if(number < min || number > max){
+            response.sendRedirect("/guess");  //this will redirect to the form if they enter a number outside of the range 1-3.
+        } else if(number == randomNumber){
             response.sendRedirect("/correct");
         } else {
             response.sendRedirect("/incorrect");
