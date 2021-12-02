@@ -17,9 +17,10 @@ public class NumberLoseServlet extends HttpServlet {
         request.getRequestDispatcher("/guessoutcome.jsp").forward(request, response);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        response.sendRedirect("guessoutcome");
-    }
+    //The doPost is not necessary here
+//    @Override
+//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//
+//        response.sendRedirect("guessoutcome");
+//    }
 }
