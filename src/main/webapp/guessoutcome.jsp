@@ -17,5 +17,7 @@
   In either case, the user will see the same view but with an outcome-specific message in a heading (e.g. "You Won!" or "You Lose!")
 One servlet will redirect to the </p>
 
+<p>You ${message}</p>  <!--the message will either be "you win" or "you lose"-->
+
 </body>
 </html>
