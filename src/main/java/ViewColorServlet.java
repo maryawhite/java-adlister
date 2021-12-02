@@ -11,7 +11,7 @@ public class ViewColorServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String color = request.getParameter("color");
-        request.setAttribute("color", color);         //why do we have to set the attribute in both servlets? //I think because in pickcolor, it's only setting the attribute for the pick color servlet, and here's it's setting the attribute for the viewcolor servlet
+        request.setAttribute("color", color);    //set the attribute for the viewcolor servlet
         request.getRequestDispatcher("viewcolor.jsp").forward(request, response);
     }
 

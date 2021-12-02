@@ -16,7 +16,7 @@
 <h3>What's your favorite color?</h3>
 <form method="post" action="/pickcolor">
 
-  <label for="color">Address</label>
+  <label for="color">Type your favorite color</label>
   <input type="text" name="color" id="color" placeholder="Type in your favorite color.">
   <br>
 

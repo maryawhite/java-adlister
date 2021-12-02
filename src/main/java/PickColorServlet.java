@@ -17,7 +17,7 @@ public class PickColorServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String color = request.getParameter("color");
 
-        request.setAttribute("color", color); //the string in quotes is the bridge. use it in the jsp as <tag>${color}</tag>
+//        request.setAttribute("color", color); //this is not necessary here, you only have to setAttribute in the viewColorServlet where you want to see the changes
 
         response.sendRedirect("/viewcolor?color=" + color); //pass the data from one servlet to another by adding the color value in a query string
 
