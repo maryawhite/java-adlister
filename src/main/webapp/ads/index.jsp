@@ -18,12 +18,13 @@
 <jsp:include page="../partials/navbar.jsp" />
 
 <c:forEach var="ad" items="${ads}">
-    <div class="ad">
-        <h1>${ad.title}</h1>
+    <div>
+        <h1>${ad.title}</h1> <%--we could use the getTitle() method here--%>
+
         <p>${ad.description}</p>
-<%--        <p class="text-muted small">Ad id: ${ad.id}, Ad userid: ${ad.userId} </p>--%>
     </div>
 </c:forEach>
 
+<%--comment--%>
 </body>
 </html>
