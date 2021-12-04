@@ -14,9 +14,7 @@
         <h1>Viewing your profile.</h1>
     </div>
 
-<%--<c:if test="${isAdmin}">--%>
-<%--    --%>
-<%--</c:if>--%>
+    <p>Welcome ${user}!</p>
 
 </body>
 </html>
