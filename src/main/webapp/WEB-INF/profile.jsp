@@ -16,5 +16,10 @@
 
     <p>Welcome ${user}!</p>
 
+<!--trying to add a logout button. when the user clicks logout, it should take them to the logout servlet, which invalidates the session and redirects to the log in view-->
+    <form action="/logout" method="post">
+        <input type="submit" value="Logout"/>
+    </form>
+
 </body>
 </html>

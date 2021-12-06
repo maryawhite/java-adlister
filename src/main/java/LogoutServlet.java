@@ -17,4 +17,13 @@ public class LogoutServlet extends HttpServlet {
 
         response.sendRedirect("/login");
     }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    //after the user logs in and they are on the profile page, they can click logout and it will log them out. the button is on the profile.jsp and the action is /logout
+        // this works ok, but there's an additional step that would need to be done to prevent the user from clicking the back arrow and going back to their profile.
+        request.getSession().invalidate();
+
+        response.sendRedirect("/login");
+    }
 }

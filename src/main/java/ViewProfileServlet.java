@@ -17,6 +17,6 @@ public class ViewProfileServlet extends HttpServlet {
         } else {
             response.sendRedirect("/login");  //response not request
         }
-
     }
+
 }
