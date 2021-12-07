@@ -2,7 +2,6 @@ package com.codeup.adlister.dao;
 import com.codeup.adlister.Config;
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
-
 import javax.swing.plaf.nimbus.State;
 import java.sql.DriverManager;
 import java.sql.*;
@@ -41,6 +40,7 @@ public class MySQLAdsDao implements Ads {
     @Override
     public Long insert(Ad ad) {
         try {
+//            String sql = createInsertQuery(ad);  //this would work too, it takes in an ad and puts it into a string
             String sql = "INSERT INTO ads(user_id, title, description) VALUES (?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             stmt.setLong(1, ad.getUserId());
@@ -48,11 +48,6 @@ public class MySQLAdsDao implements Ads {
             stmt.setString(3, ad.getDescription());
             stmt.executeUpdate();
             ResultSet generatedIdResultSet = stmt.getGeneratedKeys();
-
-//            Statement stmt = connection.createStatement();  //previous code
-//            stmt.executeUpdate(createInsertQuery(ad), Statement.RETURN_GENERATED_KEYS);
-//            ResultSet rs = stmt.getGeneratedKeys();
-//            rs.next();
             return generatedIdResultSet.getLong(1);
         } catch (SQLException e) {
             throw new RuntimeException("Error creating a new ad.", e);
