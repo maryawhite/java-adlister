@@ -1,4 +1,6 @@
 package com.codeup.adlister.dao;
+import java.sql.DriverManager;
+import com.mysql.cj.jdbc.Driver;
 
 public class DaoFactory {
     private static Ads adsDao;
