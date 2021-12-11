@@ -5,10 +5,11 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Welcome to my site!" />
     </jsp:include>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/style.css" type="text/css">
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-    <div class="container">
+    <div class="container mainpage">
         <h1>Welcome to the Adlister!</h1>
     </div>
 </body>
