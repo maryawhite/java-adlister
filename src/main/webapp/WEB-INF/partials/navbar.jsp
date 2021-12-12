@@ -1,7 +1,7 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <nav class="navbar navbar-expand-md navbar-light bg-light">
-            <a class="navbar-brand" href="/ads">Adlister <img src="${pageContext.request.contextPath}/img/saleengrayLogo.png" alt="saleen"> </a>
+            <a class="navbar-brand" href="/ads">Adlister</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -16,6 +16,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/register">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ads/create">Create Ad</a>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">

@@ -10,16 +10,15 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
 <div class="container">
-    <h1>Here Are all the ads!</h1>
+    <h1>Here are all the ads!</h1>
     <div class="row">
-
     <c:forEach var="ad" items="${ads}">
             <div class="col-12 col-sm-6 col-lg-4">
                 <div class="card mb-2">
                     <div class="card-body">
                         <h2 class="card-title">${ad.title}</h2>
                         <p class="card-text">${ad.description}</p>
-                        <a href="#" class="card-link">Insert Link</a>
+                        <a href="#" class="card-link">View Ad</a>
                     </div>
                 </div>
             </div>

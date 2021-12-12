@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
@@ -10,6 +12,21 @@
 
     <div class="container">
         <h1>Welcome, ${sessionScope.user.username}!</h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <c:forEach var="ad" items="${ads}">
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="card mb-3 shadow">
+                        <div class="card-body">
+                            <h2 class="card-title">${ad.title}</h2>
+                            <p class="card-text">${ad.description}</p>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
     </div>
 
 </body>
