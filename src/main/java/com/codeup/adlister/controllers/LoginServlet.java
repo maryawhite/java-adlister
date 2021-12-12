@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
         boolean validAttempt = Password.check(password, user.getPassword());
 
         if (validAttempt) {
-            request.getSession().setAttribute("user", user);
+            request.getSession().setAttribute("user", username);
             request.getSession().setAttribute("userId", userId);
             response.sendRedirect("/profile");
         } else {

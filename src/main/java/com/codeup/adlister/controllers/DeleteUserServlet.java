@@ -15,8 +15,8 @@ import java.sql.SQLException;
 @WebServlet(name = "DeleteUserServlet", urlPatterns = "/delete")
 public class DeleteUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    request.getSession().getAttribute("username");
-    request.getSession().getAttribute("userId");
+
+        User user = DaoFactory.getUsersDao().findByUsername((String) request.getSession().getAttribute("user"));
 
         //if they're not logged in, send them to login
         if (request.getSession().getAttribute("user") == null) {
@@ -28,8 +28,10 @@ public class DeleteUserServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        User user = DaoFactory.getUsersDao().findByUsername(request.getParameter("user")); //building a user object using the current user
+        System.out.println(user.getUsername());
 
-        DaoFactory.getUsersDao().deleteUser((Long) request.getSession().getAttribute("userId"));
+        DaoFactory.getUsersDao().deleteUser(user.getId());
         response.sendRedirect("/ads");
 
 
