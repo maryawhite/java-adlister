@@ -21,9 +21,10 @@ public class LoginServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String userId = request.getParameter("id");
         User user = DaoFactory.getUsersDao().findByUsername(username);
 
         if (user == null) {
@@ -35,9 +36,11 @@ public class LoginServlet extends HttpServlet {
 
         if (validAttempt) {
             request.getSession().setAttribute("user", user);
+            request.getSession().setAttribute("userId", userId);
             response.sendRedirect("/profile");
         } else {
             response.sendRedirect("/login");
         }
     }
 }
+//use getAttribute  in conjunction with  request.getRequestDispatcher("/WEB-INF/delete.jsp").forward(request, response);

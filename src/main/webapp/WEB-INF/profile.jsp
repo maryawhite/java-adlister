@@ -27,6 +27,10 @@
                 </div>
             </c:forEach>
         </div>
+
+        <form method="post" action="/delete">
+            <input type="submit" name="delete" value="DELETE">
+        </form>
     </div>
 
 </body>
