@@ -1,12 +1,17 @@
 package com.codeup.adlister.models;
 
+
+import java.util.Date;
+
 public class Ad {
     private long id;
     private long userId;
     private String title;
     private String description;
+    private String creationDate;
 
-    public Ad(long id, long userId, String title, String description) {
+
+    public Ad(long id, long userId, String title, String description, Date creationDate) {
         this.id = id;
         this.userId = userId;
         this.title = title;
@@ -49,5 +54,9 @@ public class Ad {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCreationDate() {
+        return creationDate;
     }
 }

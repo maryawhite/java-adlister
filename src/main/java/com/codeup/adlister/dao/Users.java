@@ -9,4 +9,6 @@ public interface Users {
     Long insert(User user);
 
     User deleteUser(Long userId);
+
+    User findByUserId(int userId);
 }

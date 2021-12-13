@@ -18,7 +18,7 @@
                     <div class="card-body">
                         <h2 class="card-title">${ad.title}</h2>
                         <p class="card-text">${ad.description}</p>
-                        <a href="#" class="card-link">View Ad</a>
+                        <a href="${pageContext.request.contextPath}/viewad/?adId=${ad.id}">View Ad</a>  <!--this is where we are setting adId to be used in the viewAd servlet-->
                     </div>
                 </div>
             </div>

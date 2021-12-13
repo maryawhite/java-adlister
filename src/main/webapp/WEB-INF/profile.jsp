@@ -16,12 +16,13 @@
 
     <div class="container">
         <div class="row">
-            <c:forEach var="ad" items="${ads}">
+            <c:forEach var="ad" items="${ads}">   <!--we set the attribute ads in the viewprofile servlet-->
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="card mb-3 shadow">
                         <div class="card-body">
                             <h2 class="card-title">${ad.title}</h2>
                             <p class="card-text">${ad.description}</p>
+                            <p class="card-text text-muted small">Created by: ${user.username}</p>  <!--this one works on profile jsp, but creation date doesn't-->
                         </div>
                     </div>
                 </div>

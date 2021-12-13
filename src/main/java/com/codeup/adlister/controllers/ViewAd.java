@@ -10,32 +10,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Date;
 
-@WebServlet(name = "controllers.AdsIndexServlet", urlPatterns = "/ads")
-public class AdsIndexServlet extends HttpServlet {
+@WebServlet (name = "controllers.ViewAd", urlPatterns = "/viewad/*")
+public class ViewAd extends HttpServlet {
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("ads", DaoFactory.getAdsDao().all());
-        request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
-
 
         int adId = Integer.parseInt(request.getParameter("adId"));
+//        try {
+//            request.setAttribute("creationDate", DaoFactory.getAdsDao().getCreationDate(adId));
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
 
-        Ad ad = null;
         try {
-            ad = (Ad) DaoFactory.getAdsDao().getAdById(adId);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        if(ad != null){
+            Ad ad = (Ad) DaoFactory.getAdsDao().getAdById(adId);
             long userId = ad.getUserId();
             request.setAttribute("user", DaoFactory.getUsersDao().findByUserId((int) userId));
-
-        }
-        try {
             request.setAttribute("ad", DaoFactory.getAdsDao().getAdById(adId));
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        request.getRequestDispatcher("/WEB-INF/ads/viewad.jsp").forward(request, response);
+
     }
+
 }

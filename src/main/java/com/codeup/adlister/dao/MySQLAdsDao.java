@@ -4,9 +4,6 @@ import com.codeup.adlister.Config;
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +15,9 @@ public class MySQLAdsDao implements Ads {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
-                config.getUrl(),
-                config.getUser(),
-                config.getPassword()
+                    config.getUrl(),
+                    config.getUser(),
+                    config.getPassword()
             );
         } catch (SQLException e) {
             throw new RuntimeException("Error connecting to the database!", e);
@@ -39,7 +36,35 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    //write a method that will allow the logged in user to see all of their ads
+    public List<Ad> allById(long userId) throws SQLException {
+        String query = "SELECT * FROM ads WHERE user_id = ?";
+        PreparedStatement ps;
+        ps = connection.prepareStatement(query);
+        ps.setInt(1, (int) userId);
+        ResultSet resultSet = ps.executeQuery();
+        return createAdsFromResults(resultSet);
+    }
 
+    //write a method to view one ad
+    public Ad getAdById(long id) throws SQLException {
+        String query = "SELECT * FROM ads WHERE id = ?";
+        PreparedStatement ps;
+        ps = connection.prepareStatement(query);
+        ps.setLong(1, id);
+        ResultSet rs = ps.executeQuery();
+        Ad ad = null;
+        while (rs.next()) {
+            ad = new Ad(
+                    rs.getLong("id"),
+                    rs.getInt("user_id"),
+                    rs.getString("title"),
+                    rs.getString("description"),
+                    rs.getDate("creation_date")
+            );
+        }
+        return ad;
+    }
 
     @Override
     public Long insert(Ad ad) {
@@ -60,10 +85,11 @@ public class MySQLAdsDao implements Ads {
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
-            rs.getLong("id"),
-            rs.getLong("user_id"),
-            rs.getString("title"),
-            rs.getString("description")
+                rs.getLong("id"),
+                rs.getLong("user_id"),
+                rs.getString("title"),
+                rs.getString("description"),
+                rs.getDate("creation_date")
         );
     }
 
@@ -73,5 +99,13 @@ public class MySQLAdsDao implements Ads {
             ads.add(extractAd(rs));
         }
         return ads;
+    }
+
+    public List<Ad> getCreationDate(long id) throws SQLException {
+        String query = "SELECT creation_date FROM ads WHERE id = ?";
+        PreparedStatement ps = connection.prepareStatement(query);
+        ps.setLong(1, id);
+        ResultSet resultSet = ps.executeQuery();
+        return createAdsFromResults(resultSet);
     }
 }
